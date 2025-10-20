@@ -43,7 +43,6 @@ next-env.d.ts
 .pnpm-store
 
 # Default TypeSpec output
-tsp-output/
 dist/
 
 # Dependency directories
