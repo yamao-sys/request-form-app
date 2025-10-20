@@ -11,7 +11,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
     "typecheck": "tsc --noEmit",
     "gen:api-spec": "cd api-spec && npx tsp compile . && node patch.mjs && cd ..",
-    "gen:api-spec:watch": "SHELL=/bin/bash npx chokidar 'api-spec/**/*.tsp' -c 'pnpm gen:api-spec'"
+    "gen:api-spec:watch": "SHELL=/bin/bash npx chokidar 'api-spec/**/*.tsp' -c 'pnpm gen:api-spec'",
+    "diff:api-spec:check": "pnpm gen:api-spec && git add api-spec/tsp-output/schema/openapi.yaml && git diff --staged --quiet || (echo 'tspとyamlの変更が同期されていません' && exit 1)"
   },
   "dependencies": {
     "next": "15.5.6",
