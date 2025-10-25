@@ -2,6 +2,7 @@
   "name": "request-form",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -12,9 +13,11 @@
     "typecheck": "tsc --noEmit",
     "gen:api-spec": "cd api-spec && npx tsp compile . && node patch.mjs && cd ..",
     "gen:api-spec:watch": "SHELL=/bin/bash npx chokidar 'api-spec/**/*.tsp' -c 'pnpm gen:api-spec'",
-    "diff:api-spec:check": "pnpm gen:api-spec && git add api-spec/tsp-output/schema/openapi.yaml && git diff --staged --quiet || (echo 'tspとyamlの変更が同期されていません' && exit 1)"
+    "diff:api-spec:check": "pnpm gen:api-spec && git add api-spec/tsp-output/schema/openapi.yaml && git diff --staged --quiet || (echo 'tspとyamlの変更が同期されていません' && exit 1)",
+    "gen:api:client": "orval --config orval/config.ts"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.90.5",
     "next": "15.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0"
@@ -22,6 +25,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@tanstack/react-query-devtools": "^5.90.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -30,6 +34,7 @@
     "eslint-config-next": "15.5.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-unused-imports": "^4.2.0",
+    "orval": "^7.14.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwindcss": "^4",
