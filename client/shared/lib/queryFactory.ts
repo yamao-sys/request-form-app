@@ -21,7 +21,7 @@ export function createQueryClient() {
         throwOnError: true,
       },
       mutations: {
-        throwOnError: true,
+        throwOnError: false,
         onError: (error) => {
           /* エラー監視ツールへのログ送信など */
           console.error(error);
